@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/Whence.Samples.CustomerApp/Whence.Samples.CustomerApp.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Whence.Cli/Whence.Cli.csproj" />
+    <Project Path="src/Whence.Instrumentation/Whence.Instrumentation.csproj" />
+    <Project Path="src/Whence.Recorder/Whence.Recorder.csproj" />
+  </Folder>
+</Solution>
