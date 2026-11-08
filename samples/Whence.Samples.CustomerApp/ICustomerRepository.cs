@@ -4,5 +4,7 @@ namespace Whence.Samples.CustomerApp
     {
         IEnumerable<Customer> GetAll();
         void ForEach(Action<Customer> action);
+        
+        Task<IEnumerable<Customer>> GetCustomersAsync();
     }
 }

@@ -53,5 +53,15 @@ namespace Whence.Samples.CustomerApp
             }
         }
 
+        public async Task LoadMoreAsync()
+        {
+            var moreCustomers = await customerRepository.GetCustomersAsync();
+
+            foreach (var customer in moreCustomers)
+            {
+                Customers.Add(customer);
+            }
+        }
+
     }
 }

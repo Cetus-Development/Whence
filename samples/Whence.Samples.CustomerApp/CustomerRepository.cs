@@ -23,5 +23,16 @@ namespace Whence.Samples.CustomerApp
             }
         }
 
+        public async Task<IEnumerable<Customer>> GetCustomersAsync()
+        {
+            List<Customer> newList = new List<Customer>
+            {
+                new Customer("Hans", false),
+                new Customer("Nadia", true)
+            };
+
+            return newList;
+        }
+
     }
 }
