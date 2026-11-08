@@ -1,0 +1,15 @@
+
+
+What changed?
+-
+
+Why?
+-
+
+# ^ First line: type(scope): short summary in imperative mood
+#
+# Types:  feat fix refactor style docs test perf build ci chore revert
+# Scopes: cli instrument recorder format render sample
+#         (docs: use the file name, e.g. docs(readme))
+#
+# Lines starting with # are ignored. Details: CONTRIBUTING.md
