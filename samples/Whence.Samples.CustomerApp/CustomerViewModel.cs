@@ -53,6 +53,9 @@ namespace Whence.Samples.CustomerApp
             }
         }
 
+        // Deliberate bug: added customers bypass the current filter.
+        // Whence must show that e.g. "Nadia" (active) reached Customers via
+        // LoadMoreAsync without passing a filter branch, even under InactiveOnly.
         public async Task LoadMoreAsync()
         {
             var moreCustomers = await customerRepository.GetCustomersAsync();
