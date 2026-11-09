@@ -25,6 +25,7 @@ namespace Whence.Samples.CustomerApp
 
         public async Task<IEnumerable<Customer>> GetCustomersAsync()
         {
+            await Task.Delay(1000);
             List<Customer> newList = new List<Customer>
             {
                 new Customer("Hans", false),

@@ -48,7 +48,12 @@ The call stack tells you **where** you are. Whence tells you **how you got there
     with source line — this answers *why* the path was taken
 - **Saves the recording to a file** first, then displays it.
   Recording and display stay separate, so a GUI can later read the same file.
-- **Displays the history as a tree in the terminal.**
+- **Displays the history in the terminal in two levels** — like `git log` and `git show`:
+  - `whence show` — the **history of the target**, one line per change:
+    `#2 Clear`, `#3 Add "Andrew"`, …
+  - `whence show <n>` — the **path to change `<n>`**: every step of the call chain
+    with **file and line** (e.g. `Program.cs:7`), relationship, values and branches.
+    Only the lines on the path are shown, not the code in between.
 - **Does not crash** with multiple threads or `async`/`await`,
   even if the output is incomplete there.
 - **Test target:** a sample console app that simulates a ViewModel scenario.
@@ -66,6 +71,12 @@ The call stack tells you **where** you are. Whence tells you **how you got there
 ## Ideas for later
 
 - **Pick the target by clicking on a UI element** in the running application
+- **Expand changes in place** in a GUI: the history stays visible, and each
+  change can be expanded to show its path
+- **Selectable views**, depending on how deep the user wants to go:
+  - **Per change** (default): history first, path on demand
+  - **Grouped by cause**: changes with the same path are grouped under it —
+    a rough tree for large applications
 - HTML report, timeline or graph view
 - Jump from an entry straight to the source line
 - Support for more application types: WPF, Avalonia, WinForms, console, web
