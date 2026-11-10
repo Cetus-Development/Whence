@@ -7,4 +7,7 @@
     <Project Path="src/Whence.Instrumentation/Whence.Instrumentation.csproj" />
     <Project Path="src/Whence.Recorder/Whence.Recorder.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Whence.Tests/Whence.Tests.csproj" />
+  </Folder>
 </Solution>
