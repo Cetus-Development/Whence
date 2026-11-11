@@ -79,6 +79,23 @@ Final content: Arthur, Maja, Mathilda, Hans, Nadia — matches the console outpu
 Each path starts at the outermost call and ends at the change.
 Only the lines on the path are shown.
 
+**How to read a path** — using change #2 as an example:
+
+```
+Program.cs:7              customerVM.Reload()
+└ CustomerViewModel.cs:28   Customers.Clear()
+```
+
+- **Each line is one step** on the way to the change.
+- **Left:** where the step happens — file and line.
+- **Middle:** the code on that line.
+- **`└` and indentation:** called from the line above.
+- **Right (optional):** extra information, such as the branch taken
+  (`branch: case All`) or the value passed (`value: Andrew`).
+
+Read it as: *"`Program.cs` line 7 calls `Reload()`, which leads to
+`CustomerViewModel.cs` line 28, where `Customers` is cleared."*
+
 **#1 — Set**
 
 ```
