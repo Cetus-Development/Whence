@@ -18,4 +18,25 @@ public class StartupAssemblyLocatorTests
 
         Assert.Equal(Path.Combine(path, "MyApp.dll"), result);
     }
+
+    [Fact]
+    public void Find_FolderWithoutRuntimeConfig_ThrowsFileNotFoundException()
+    {
+        var folder = Directory.CreateTempSubdirectory();
+        var path = folder.FullName;
+
+        Assert.Throws<FileNotFoundException>(() => StartupAssemblyLocator.Find(path));
+    }
+
+    [Fact]
+    public void Find_FolderWithMultipleRuntimeConfig_ThrowsInvalidOperationException()
+    {
+        var folder = Directory.CreateTempSubdirectory();
+        var path = folder.FullName;
+
+        File.WriteAllText(Path.Combine(path, "AppOne.runtimeconfig.json"), "");
+        File.WriteAllText(Path.Combine(path, "AppTwo.runtimeconfig.json"), "");
+
+        Assert.Throws<InvalidOperationException>(() => StartupAssemblyLocator.Find(path));
+    }
 }
