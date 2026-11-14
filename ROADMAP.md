@@ -99,12 +99,27 @@ The call stack tells you **where** you are. Whence tells you **how you got there
   applications from **.NET 6 onward** are supported. v0.1 is tested with
   .NET 8 and .NET 10. .NET Framework may follow later.
 - **How Whence runs the target.** `whence run [<app-folder>] --target <Class>.<Property> [-- <app args>]`:
-  1. Copy the application folder to a separate working folder (e.g. `.whence/`).
+  1. Copy the application folder to the working folder `.whence/` (see below).
   2. Detect the application's own assemblies via `MyApp.deps.json`
      (`"type": "project"` = own code, `"type": "package"` = NuGet package).
   3. Add recording calls to the own assemblies and place the recording library next to them.
   4. Start the copy. The user operates the application as usual; when it exits,
      Whence displays the recording.
+- **Working folder `.whence/` by default** — no setup, no extra options.
+  The user should be able to start with a single command. Whence creates
+  `.whence/` in the current folder, like `.git/`:
+  ```
+  .whence/
+  ├ .gitignore        ← contains only "*"
+  ├ app/              ← the instrumented copy
+  └ recording.jsonl   ← the recording
+  ```
+  - `whence show` finds the recording there without any arguments.
+  - The user sees what Whence created and can simply delete it.
+  - Nothing is written into the application folder itself.
+  - **Ignored by Git automatically:** the `.gitignore` inside `.whence/`
+    contains `*`, so Git ignores the whole folder (the same trick pytest
+    uses for `.pytest_cache/`). The user's own `.gitignore` stays untouched.
 - **Recording format: JSON Lines** (one JSON object per line, appended and
   flushed immediately). Whence may be used to find out *why* an application
   crashes — the recording must survive that crash. The recording library has
